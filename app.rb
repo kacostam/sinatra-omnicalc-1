@@ -52,11 +52,14 @@ get("/payment/results") do
 end
 
 
-
+# random number picker
 get("/random/new") do
-  erb(:random)
+  erb(:random_calc)
 end
 
 get("/random/results") do
+  @min = params.fetch("user_min").to_f
+  @max = params.fetch("user_max").to_f
+  @the_result = rand(@min..@max)
   erb(:random_results)
 end
